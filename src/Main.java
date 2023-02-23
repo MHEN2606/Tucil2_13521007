@@ -3,25 +3,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
-    public static boolean isPangkatDua(int n){
-        while(n%2==0){
-            n=n/2;
-        }
-        if(n==1){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
     public static void main(String[] args){
         ShortestDistance sd = new ShortestDistance();
         Scanner in = new Scanner(System.in);
         // Make array of points
         System.out.println("Masukkan jumlah titik: ");
         int n = in.nextInt();
-        while(!isPangkatDua(n)){
-            System.out.println("Jumlah titik minimal adalah 2 dan harus pangkat 2. Silakan ulangi masukan!");
+        while(n < 2){
+            System.out.println("Jumlah titik minimal adalah 2. Silakan ulangi masukan!");
             System.out.println("Masukkan jumlah titik: ");
             n = in.nextInt();
         }

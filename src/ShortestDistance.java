@@ -17,21 +17,47 @@ public class ShortestDistance{
         if(ap.n == 2){
             ret = new ReturnType(ap.array[0], ap.array[1], euclideanDistance(ap.array[0], ap.array[1]));
             return ret;
+        }else if(ap.n == 3){
+            double t1 = euclideanDistance(ap.array[0], ap.array[1]);
+            double t2 = euclideanDistance(ap.array[0], ap.array[2]);
+            double t3 = euclideanDistance(ap.array[1], ap.array[2]);
+            if(t1 < t2){
+                if(t1 < t3){
+                    ret = new ReturnType(ap.array[0], ap.array[1], t1);
+                }else{
+                    ret = new ReturnType(ap.array[1], ap.array[2], t3);
+                }
+            }else{
+                if(t2 < t3){
+                    ret = new ReturnType(ap.array[0], ap.array[2], t2);
+                }else{
+                    ret = new ReturnType(ap.array[1], ap.array[2], t3);
+                }
+            }
+            return ret;
         }else{
             // DIVIDE
+            // Define midpoint
+            int carry;
+            if(ap.n % 2 == 0){
+                carry = 0;
+            }else{
+                carry = 1;
+            }
+
             point[] p1_arr = new point[ap.n/2];
-            point[] p2_arr = new point[ap.n/2];
+            point[] p2_arr = new point[ap.n/2 + carry];
 
             for(int i = 0; i < ap.n/2; i++){
                 p1_arr[i] = ap.array[i];
             }
 
-            for(int i = 0; i < ap.n/2; i++){
+            for(int i = 0; i < ap.n/2 + carry; i++){
                 p2_arr[i] = ap.array[i + ap.n/2];
             }
 
             ArrayPoint p1 = new ArrayPoint(ap.n/2, p1_arr);
-            ArrayPoint p2 = new ArrayPoint(ap.n/2, p2_arr);
+            ArrayPoint p2 = new ArrayPoint(ap.n/2 + carry, p2_arr);
             
             // Combine
             ReturnType d1 = findShortestDistance(p1);
@@ -77,18 +103,17 @@ public class ShortestDistance{
                 }
             }
 
-            /* DO SOMETHING HERE FOR 3D POINTS */
-
-            // Urutkan y
-            slab.sortArray(slab.array, 1);
-            
-            // Hitung Jarak
-            for (int i = 0; i < slab.n; i++){
-                for(int j = i+1; j < slab.n; j++){
-                    if(Math.abs(slab.array[i].getX() - slab.array[j].getX()) < ret.dist || Math.abs(slab.array[i].getY() - slab.array[j].getY()) < ret.dist){
-                        ReturnType newret = new ReturnType(slab.array[i], slab.array[j], euclideanDistance(slab.array[i], slab.array[j]));
-                        if(ret.dist > newret.dist){
-                            ret = newret;
+            /* Iterasikan untuk jarak terdekat,
+             periksa untuk seluruh nilai n, n-1, ..., z, dan y */
+            for(int i = ap.array[0].derajat-1; i > 0 ;i--){
+                slab.sortArray(slab.array, i);
+                for (int j = 0; j < slab.n; j++){
+                    for(int k = j+1; k < slab.n; k++){
+                        if(Math.abs(slab.array[j].getX() - slab.array[k].getX()) < ret.dist || Math.abs(slab.array[j].buffer[i] - slab.array[k].buffer[i]) < ret.dist){
+                            ReturnType newret = new ReturnType(slab.array[j], slab.array[k], euclideanDistance(slab.array[j], slab.array[k]));
+                            if(ret.dist > newret.dist){
+                                ret = newret;
+                            }
                         }
                     }
                 }

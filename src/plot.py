@@ -40,6 +40,7 @@ if(d == 2):
     
     plt.plot(xpoints, ypoints, 'ok')
     plt.plot(xpointSol, ypointSol, 'or')
+    plt.plot(xpointSol, ypointSol, 'r')
     plt.show()
 elif(d==3):
 # Plot 3D
@@ -78,6 +79,11 @@ elif(d==3):
 
     for i in range(2):
         ax.plot(xpointSol[i], ypointSol[i], zpointsSol[i], 'or')
+
+    ax.set_xlabel('Sumbu X')
+    ax.set_ylabel('Sumbu Y')
+    ax.set_zlabel('Sumbu Z')
+
     plt.show()
 
 f.close()
