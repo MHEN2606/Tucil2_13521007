@@ -34,7 +34,7 @@ out = sd.findShortestDistance(ap, d)
 endDNC = tm.time()
 coe = sd.countOfEuc
 print("========================")
-print("        RESULT     ")
+print("        RESULT    n     ")
 print("========================")
 print("USING DIVIDE AND CONQUER")
 print("========================")

@@ -43,6 +43,7 @@ def findShortestDistance(ap, d):
         else:
             carry = 1
         
+        # Bagi titik-titik menjadi partisi p1 dan p2
         p1 = [[] for i in range (n//2)]
         p2 = [[] for i in range ((n//2)+carry)]
         for i in range(n//2):
@@ -51,10 +52,12 @@ def findShortestDistance(ap, d):
         for i in range((n//2) + carry):
             p2[i] = ap[i + (n//2)]
 
+        # Cari jarak minimum pada tiap partisi
         d1 = findShortestDistance(p1, d)
         d2 = findShortestDistance(p2, d)
 
         # Conquer
+        # Bandingkan d1 dan d2 untuk mengambil minimumnya
         if(d1[2] < d2[2]):
             ret = [d1[0], d1[1], d1[2]]
         else:
@@ -62,6 +65,8 @@ def findShortestDistance(ap, d):
 
         # Combine
         # Make a Slab
+
+        # Hitung jumlah yang akan dimasukkan ke dalam slab
         nslab = 0
         for i in range(len(p1)):
             if(p1[i][0] >= ap[n//2][0]-ret[2]):
