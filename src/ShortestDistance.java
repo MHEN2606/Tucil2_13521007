@@ -77,6 +77,8 @@ public class ShortestDistance{
                 }
             }
 
+            /* DO SOMETHING HERE FOR 3D POINTS */
+
             // Urutkan y
             slab.sortArray(slab.array, 1);
             

@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Main {
     public static boolean isPangkatDua(int n){
         while(n%2==0){
@@ -52,6 +55,38 @@ public class Main {
         System.out.println("Divide and Conquer Runtime: " + (endDNC-startDNC) + "ms");
         System.out.println("Bruteforce Runtime: " + (endB-startB) + "ms");
 
+        try{
+            FileWriter outputFile = new FileWriter("sol.txt");
+
+            outputFile.write(n + "\n");
+            outputFile.write(d + "\n");
+            if( d== 3 || d == 2){
+                for(int i = 0; i < n; i++){
+                    if(d == 3){
+                        outputFile.write(ap.array[i].buffer[0] + " " + ap.array[i].buffer[1] + " " + ap.array[i].buffer[2] + "\n");
+                    }else{
+                        outputFile.write(ap.array[i].buffer[0] + " " + ap.array[i].buffer[1] + "\n");
+                    }
+                }
+
+                if(d == 3){
+                    outputFile.write(out.getP1().buffer[0] + " " + out.getP1().buffer[1] + " " + out.getP1().buffer[2] + "\n");
+                }else{
+                    outputFile.write(out.getP1().buffer[0] + " " + out.getP1().buffer[1] + "\n");
+                }
+
+                if(d == 3){
+                    outputFile.write(out.getP2().buffer[0] + " " + out.getP2().buffer[1] + " " + out.getP2().buffer[2]);
+                }else{
+                    outputFile.write(out.getP2().buffer[0] + " " + out.getP2().buffer[1]);
+                }
+            }
+            outputFile.close();
+
+        } catch (IOException e) {
+            System.out.println("Error Occured.");
+            e.printStackTrace();
+        }
         in.close();
     }
 }
