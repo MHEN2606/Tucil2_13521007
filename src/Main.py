@@ -1,3 +1,5 @@
+# Filename: Main.py
+# Matthew Mahendra - 13521007
 import point as pt
 import ShortestDistance as sd
 import time as tm
@@ -49,13 +51,15 @@ print("   USING BRUTE FORCE")
 print("========================")
 print("Shortest Distance using Brute Force is", round(brute[2],2), "with points", pt.printPoint(brute[0], d), "and", pt.printPoint(brute[1], d))
 print("Euclidean Distance operations count:", (sd.countOfEuc-coe))
+
 # Print Runtime
 print("========================")
 print("        RUNTIME         ")
 print("========================")
-print("Divide and Conquer Runtime:", round((endDNC-startDNC)*1000,2), "ms");
-print("Bruteforce Runtime:", round((endB-startB)*1000,2), "ms");
+print("Divide and Conquer Runtime:", round((endDNC-startDNC)*1000,2), "ms")
+print("Bruteforce Runtime:", round((endB-startB)*1000,2), "ms")
 
+# Visualization
 if(d == 2 or d == 3):
     choice = input("Apakah Anda ingin melihat visualisasi pada 2D atau 3D? (y/n) ")
     if(choice == "y"):

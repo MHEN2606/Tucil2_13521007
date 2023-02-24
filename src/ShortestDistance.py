@@ -1,3 +1,5 @@
+# Filename: ShortestDistance.py
+# Matthew Mahendra - 13521007
 import point as pt
 import math
 
@@ -15,13 +17,15 @@ def euclideanDistance(p1, p2):
 
 # Fungsi untuk menentukan jarak terdekat dari set of points
 def findShortestDistance(ap, d):
+    # Jumlah titik dengan menghitung panjang dari array of points
     n = len(ap)
+    # Basis ketika jumlah titik adalah 2 atau 3
     if(n == 2):
         return [ap[0],ap[1], euclideanDistance(ap[0], ap[1])]
     elif (n==3):
-        t1 = euclideanDistance(ap[0], ap[1]);
-        t2 = euclideanDistance(ap[0], ap[2]);
-        t3 = euclideanDistance(ap[1], ap[2]);
+        t1 = euclideanDistance(ap[0], ap[1])
+        t2 = euclideanDistance(ap[0], ap[2])
+        t3 = euclideanDistance(ap[1], ap[2])
 
         if(t1 < t2):
             if(t1 < t3):
@@ -94,7 +98,7 @@ def findShortestDistance(ap, d):
             for j in range(len(slab)):
                 for k in range(j+1, len(slab)):
                     if(abs(slab[j][0] - slab[k][0]) < ret[2] or abs(slab[j][i] - slab[k][i]) < ret[2]):
-                        newret = [slab[j], slab[k], euclideanDistance(slab[j], slab[k])];
+                        newret = [slab[j], slab[k], euclideanDistance(slab[j], slab[k])]
                         if(ret[2] > newret[2]):
                             ret = newret
         
@@ -102,18 +106,17 @@ def findShortestDistance(ap, d):
 
 def findShortestDistanceBrute(ap):
     # Mencari Shortest Distance Menggunakan Algoritma Bruteforce
-    d = euclideanDistance(ap[0], ap[1]);
-    p1 = ap[0];
-    p2 = ap[1];
+    d = euclideanDistance(ap[0], ap[1])
+    p1 = ap[0]
+    p2 = ap[1]
     for i in range(len(ap)):
         for j in range(i+1, len(ap)):
-            temp = euclideanDistance(ap[i], ap[j]);
+            temp = euclideanDistance(ap[i], ap[j])
             if(temp < d):
-                d = temp;
-                p1 = ap[i];
-                p2 = ap[j];
-            
+                d = temp
+                p1 = ap[i]
+                p2 = ap[j]
 
-    ret = [p1,p2,d];
+    ret = [p1,p2,d]
 
-    return ret;
+    return ret

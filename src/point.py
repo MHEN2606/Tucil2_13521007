@@ -1,3 +1,5 @@
+# Filename: point.py
+# Matthew Mahendra - 13521007
 import random
 
 # Konstruktor point
@@ -20,11 +22,11 @@ def sortArray(arr, order):
         min = i
         for j in range(i+1, len(arr)):
             if(arr[j][order] < arr[min][order]):
-                min = j;
+                min = j
     
-        temp_point = arr[min]; 
-        arr[min] = arr[i];
-        arr[i] = temp_point;
+        temp_point = arr[min] 
+        arr[min] = arr[i]
+        arr[i] = temp_point
 
     return arr
 
