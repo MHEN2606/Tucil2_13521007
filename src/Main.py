@@ -17,7 +17,7 @@ n = int(input("Masukkan jumlah titik: "))
 while(n < 2):
     print("Jumlah titik minimal adalah 2. Silakan ulangi masukan!")
     print("Masukkan jumlah titik: ")
-    n = int(input("Masukkan jumlah titik (n): "))
+    n = int(input("Masukkan jumlah titik: "))
 
 d = int(input("Masukkan dimensi titik: "))
 
